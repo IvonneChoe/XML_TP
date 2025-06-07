@@ -5,7 +5,7 @@ let flags="-Headers @{ 'accept' = 'application/json'; 'x-api-key' = '${SPORTRADA
 # bash flags: 
 # Tira error si no se pasan los parámetros necesarios.
 
-if [[ "$OSTYPE" == linux* || "$OSTYPE" == darwin* ]]; then
+if [ "$OSTYPE" == linux* || "$OSTYPE" == darwin* ] ; then
   request_command="curl -X GET"
   flags="--header 'accept: application/json' --header 'x-api-key: ${SPORTRADAR_API}' -o"
 fi
