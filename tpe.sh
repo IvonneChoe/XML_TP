@@ -1,5 +1,4 @@
-    let SPORTRADAR_API=$1
-    let prefix=$2
+   let prefix=$1
     # Tira error si no se pasan los parámetros necesarios.
     
     # Recibe un parámetro llamado “prefix” y que devuelva el id de la primer temporada (o elemento season) cuyo nombre (atributo name) comience con lo 
