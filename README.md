@@ -4,4 +4,11 @@
 ### Instrucciones de uso
 1. Setear variable de entorno:  
     - En PowerShell: 
-    $env:SPORTRADAR_API = API_KEY
+    ```sh
+    $env:SPORTRADAR_API = YOUR_API_KEY
+    ```
+
+    - En Bash
+    ```sh
+    export SPORTRADAR_API=YOUR_API_KEY
+    ```
