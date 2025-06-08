@@ -1,2 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<season_info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" generated_at="2025-06-07T21:33:38+00:00" xmlns="http://schemas.sportradar.com/sportsapi/handball/v2" xsi:schemaLocation="http://schemas.sportradar.com/sportsapi/handball/v2 https://schemas.sportradar.com/sportsapi/handball/v2/schemas/season_info.xsd"><season id="sr:season:95011" name="DHB Pokal 22/23" start_date="2022-08-26" end_date="2023-04-16" year="22/23" competition_id="sr:competition:57"><sport id="sr:sport:6" name="Handball"/><category id="sr:category:53" name="Germany" country_code="DEU"/><competition id="sr:competition:57" name="DHB Pokal" gender="men"/></season><coverage type="competition"><competition_properties brackets="false" schedules="true" standings="false" team_squads="true"/><sport_event_properties basic_play_by_play="true" basic_player_stats="true" basic_team_stats="true" goal_scorers="true" lineups="true" scores="live"/></coverage><stages><stage order="1" type="cup" phase="playoffs" start_date="2022-08-26" end_date="2023-04-16" year="22/23"><groups><group id="sr:cup:134521" name="DHB Pokal 22/23"><competitors><competitor id="sr:competitor:3980" name="THW Kiel" country="Germany" country_code="DEU" abbreviation="THW" gender="male"/><competitor id="sr:competitor:3981" name="ThSV Eisenach" country="Germany" country_code="DEU" abbreviation="EIS" gender="male"/><competitor id="sr:competitor:3982" name="SC Magdeburg" country="Germany" country_code="DEU" abbreviation="SCM" gender="male"/><competitor id="sr:competitor:3983" name="HSG Nordhorn-Lingen" country="Germany" country_code="DEU" abbreviation="NOL" gender="male"/><competitor id="sr:competitor:3984" name="HSG Wetzlar" country="Germany" country_code="DEU" abbreviation="WET" gender="male"/><competitor id="sr:competitor:3985" name="TV Grosswallstadt" country="Germany" country_code="DEU" abbreviation="TVG" gender="male"/><competitor id="sr:competitor:3986" name="GWD Minden" country="Germany" country_code="DEU" abbreviation="GWD" gender="male"/><competitor id="sr:competitor:3989" name="TuSEM Essen" country="Germany" country_code="DEU" abbreviation="TUE" gender="male"/><competitor id="sr:competitor:3991" name="VfL Lubeck Schwartau" country="Germany" country_code="DEU" abbreviation="VFL" gender="male"/><competitor id="sr:competitor:3993" name="SG Flensburg-Handewitt" country="Germany" country_code="DEU" abbreviation="SGF" gender="male"/><competitor id="sr:competitor:3994" name="VfL Gummersbach" country="Germany" country_code="DEU" abbreviation="GUM" gender="male"/><competitor id="sr:competitor:3995" name="FRISCH AUF! Goppingen" country="Germany" country_code="DEU" abbreviation="FAG" gender="male"/><competitor id="sr:competitor:3996" name="TBV Lemgo Lippe" country="Germany" country_code="DEU" abbreviation="TBV" gender="male"/><competitor id="sr:competitor:3997" name="HSV Hamburg" country="Germany" country_code="DEU" abbreviation="HSV" gender="male"/><competitor id="sr:competitor:3998" name="Wilhelmshavener HV" country="Germany" country_code="DEU" abbreviation="WHV" gender="male"/><competitor id="sr:competitor:3999" name="VfL Pfullingen" country="Germany" country_code="DEU" abbreviation="PFU" gender="male"/><competitor id="sr:competitor:4000" name="TUS N-Lubbecke" country="Germany" country_code="DEU" abbreviation="NLB" gender="male"/><competitor id="sr:competitor:4004" name="Rhein-Neckar Lowen" country="Germany" country_code="DEU" abbreviation="RNL" gender="male"/><competitor id="sr:competitor:4006" name="TSV Bayer Dormagen" country="Germany" country_code="DEU" abbreviation="DOR" gender="male"/><competitor id="sr:competitor:4007" name="MT Melsungen" country="Germany" country_code="DEU" abbreviation="MTM" gender="male"/><competitor id="sr:competitor:4012" name="S3L Handball" country="Germany" country_code="DEU" abbreviation="S3L" gender="male"/><competitor id="sr:competitor:5441" name="ASV Hamm-Westfalen" country="Germany" country_code="DEU" abbreviation="ASV" gender="male"/><competitor id="sr:competitor:5447" name="TSV Hannover-Burgdorf" country="Germany" country_code="DEU" abbreviation="HAN" gender="male"/><competitor id="sr:competitor:5448" name="HC Empor Rostock" country="Germany" country_code="DEU" abbreviation="HRO" gender="male"/><competitor id="sr:competitor:5451" name="Dessau-Rosslauer HV 06" country="Germany" country_code="DEU" abbreviation="DES" gender="male"/><competitor id="sr:competitor:5452" name="OHV Aurich" country="Germany" country_code="DEU" abbreviation="OAU" gender="male"/><competitor id="sr:competitor:5453" name="Fuchse Berlin" country="Germany" country_code="DEU" abbreviation="BER" gender="male"/><competitor id="sr:competitor:5458" name="TV 05/07 Huttenberg" country="Germany" country_code="DEU" abbreviation="TVH" gender="male"/><competitor id="sr:competitor:5459" name="Eulen Ludwigshafen" country="Germany" country_code="DEU" abbreviation="LUD" gender="male"/><competitor id="sr:competitor:5462" name="SG BBM Bietigheim" country="Germany" country_code="DEU" abbreviation="SGB" gender="male"/><competitor id="sr:competitor:5463" name="HBW Balingen-Weilstetten" country="Germany" country_code="DEU" abbreviation="HBW" gender="male"/><competitor id="sr:competitor:6267" name="1. VfL Potsdam" country="Germany" country_code="DEU" abbreviation="POT" gender="male"/><competitor id="sr:competitor:6268" name="Bergischer HC" country="Germany" country_code="DEU" abbreviation="BHC" gender="male"/><competitor id="sr:competitor:6272" name="TVB Stuttgart" country="Germany" country_code="DEU" abbreviation="TVB" gender="male"/><competitor id="sr:competitor:6288" name="HC Erlangen" country="Germany" country_code="DEU" abbreviation="HCE" gender="male"/><competitor id="sr:competitor:6304" name="HSC 2000 Coburg" country="Germany" country_code="DEU" abbreviation="COB" gender="male"/><competitor id="sr:competitor:6320" name="TuS 04 KL-Dansenberg" country="Germany" country_code="DEU" abbreviation="KLD" gender="male"/><competitor id="sr:competitor:6325" name="VfL Eintracht Hagen" country="Germany" country_code="DEU" abbreviation="HAG" gender="male"/><competitor id="sr:competitor:7807" name="Wolfe Wurzburg" country="Germany" country_code="DEU" abbreviation="WUE" gender="male"/><competitor id="sr:competitor:7808" name="HC Elbflorenz 2006" country="Germany" country_code="DEU" abbreviation="ELB" gender="male"/><competitor id="sr:competitor:7962" name="SC DHfK Leipzig" country="Germany" country_code="DEU" abbreviation="LEI" gender="male"/><competitor id="sr:competitor:34839" name="TuS Furstenfeldbruck" country="Germany" country_code="DEU" abbreviation="FFB" gender="male"/><competitor id="sr:competitor:35361" name="SG Pforzheim/Eutingen" country="Germany" country_code="DEU" abbreviation="PFO" gender="male"/><competitor id="sr:competitor:211610" name="HSG Konstanz" country="Germany" country_code="DEU" abbreviation="KON" gender="male"/><competitor id="sr:competitor:528763" name="MTV Braunschweig" abbreviation="MTV" gender="male"/><competitor id="sr:competitor:914657" name="TuS Vinnhorst" country="Germany" country_code="DEU" abbreviation="VIN" gender="male"/></competitors></group></groups></stage></stages></season_info>
+<season_info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    generated_at="2025-06-07T21:33:38+00:00"
+    xmlns="http://schemas.sportradar.com/sportsapi/handball/v2"
+    xsi:schemaLocation="http://schemas.sportradar.com/sportsapi/handball/v2 https://schemas.sportradar.com/sportsapi/handball/v2/schemas/season_info.xsd">
+    <season id="sr:season:95011" name="DHB Pokal 22/23" start_date="2022-08-26"
+        end_date="2023-04-16" year="22/23" competition_id="sr:competition:57">
+        <sport id="sr:sport:6" name="Handball" />
+        <category id="sr:category:53" name="Germany" country_code="DEU" />
+        <competition id="sr:competition:57" name="DHB Pokal" gender="men" />
+    </season>
+    <coverage type="competition">
+        <competition_properties brackets="false" schedules="true" standings="false"
+            team_squads="true" />
+        <sport_event_properties basic_play_by_play="true" basic_player_stats="true"
+            basic_team_stats="true" goal_scorers="true" lineups="true" scores="live" />
+    </coverage>
+    <stages>
+        <stage order="1" type="cup" phase="playoffs" start_date="2022-08-26" end_date="2023-04-16"
+            year="22/23">
+            <groups>
+                <group id="sr:cup:134521" name="DHB Pokal 22/23">
+                    <competitors>
+                        <competitor id="sr:competitor:3980" name="THW Kiel" country="Germany"
+                            country_code="DEU" abbreviation="THW" gender="male" />
+                        <competitor id="sr:competitor:3981" name="ThSV Eisenach" country="Germany"
+                            country_code="DEU" abbreviation="EIS" gender="male" />
+                        <competitor id="sr:competitor:3982" name="SC Magdeburg" country="Germany"
+                            country_code="DEU" abbreviation="SCM" gender="male" />
+                        <competitor id="sr:competitor:3983" name="HSG Nordhorn-Lingen"
+                            country="Germany" country_code="DEU" abbreviation="NOL" gender="male" />
+                        <competitor id="sr:competitor:3984" name="HSG Wetzlar" country="Germany"
+                            country_code="DEU" abbreviation="WET" gender="male" />
+                        <competitor id="sr:competitor:3985" name="TV Grosswallstadt"
+                            country="Germany" country_code="DEU" abbreviation="TVG" gender="male" />
+                        <competitor id="sr:competitor:3986" name="GWD Minden" country="Germany"
+                            country_code="DEU" abbreviation="GWD" gender="male" />
+                        <competitor id="sr:competitor:3989" name="TuSEM Essen" country="Germany"
+                            country_code="DEU" abbreviation="TUE" gender="male" />
+                        <competitor id="sr:competitor:3991" name="VfL Lubeck Schwartau"
+                            country="Germany" country_code="DEU" abbreviation="VFL" gender="male" />
+                        <competitor id="sr:competitor:3993" name="SG Flensburg-Handewitt"
+                            country="Germany" country_code="DEU" abbreviation="SGF" gender="male" />
+                        <competitor id="sr:competitor:3994" name="VfL Gummersbach" country="Germany"
+                            country_code="DEU" abbreviation="GUM" gender="male" />
+                        <competitor id="sr:competitor:3995" name="FRISCH AUF! Goppingen"
+                            country="Germany" country_code="DEU" abbreviation="FAG" gender="male" />
+                        <competitor id="sr:competitor:3996" name="TBV Lemgo Lippe" country="Germany"
+                            country_code="DEU" abbreviation="TBV" gender="male" />
+                        <competitor id="sr:competitor:3997" name="HSV Hamburg" country="Germany"
+                            country_code="DEU" abbreviation="HSV" gender="male" />
+                        <competitor id="sr:competitor:3998" name="Wilhelmshavener HV"
+                            country="Germany" country_code="DEU" abbreviation="WHV" gender="male" />
+                        <competitor id="sr:competitor:3999" name="VfL Pfullingen" country="Germany"
+                            country_code="DEU" abbreviation="PFU" gender="male" />
+                        <competitor id="sr:competitor:4000" name="TUS N-Lubbecke" country="Germany"
+                            country_code="DEU" abbreviation="NLB" gender="male" />
+                        <competitor id="sr:competitor:4004" name="Rhein-Neckar Lowen"
+                            country="Germany" country_code="DEU" abbreviation="RNL" gender="male" />
+                        <competitor id="sr:competitor:4006" name="TSV Bayer Dormagen"
+                            country="Germany" country_code="DEU" abbreviation="DOR" gender="male" />
+                        <competitor id="sr:competitor:4007" name="MT Melsungen" country="Germany"
+                            country_code="DEU" abbreviation="MTM" gender="male" />
+                        <competitor id="sr:competitor:4012" name="S3L Handball" country="Germany"
+                            country_code="DEU" abbreviation="S3L" gender="male" />
+                        <competitor id="sr:competitor:5441" name="ASV Hamm-Westfalen"
+                            country="Germany" country_code="DEU" abbreviation="ASV" gender="male" />
+                        <competitor id="sr:competitor:5447" name="TSV Hannover-Burgdorf"
+                            country="Germany" country_code="DEU" abbreviation="HAN" gender="male" />
+                        <competitor id="sr:competitor:5448" name="HC Empor Rostock"
+                            country="Germany" country_code="DEU" abbreviation="HRO" gender="male" />
+                        <competitor id="sr:competitor:5451" name="Dessau-Rosslauer HV 06"
+                            country="Germany" country_code="DEU" abbreviation="DES" gender="male" />
+                        <competitor id="sr:competitor:5452" name="OHV Aurich" country="Germany"
+                            country_code="DEU" abbreviation="OAU" gender="male" />
+                        <competitor id="sr:competitor:5453" name="Fuchse Berlin" country="Germany"
+                            country_code="DEU" abbreviation="BER" gender="male" />
+                        <competitor id="sr:competitor:5458" name="TV 05/07 Huttenberg"
+                            country="Germany" country_code="DEU" abbreviation="TVH" gender="male" />
+                        <competitor id="sr:competitor:5459" name="Eulen Ludwigshafen"
+                            country="Germany" country_code="DEU" abbreviation="LUD" gender="male" />
+                        <competitor id="sr:competitor:5462" name="SG BBM Bietigheim"
+                            country="Germany" country_code="DEU" abbreviation="SGB" gender="male" />
+                        <competitor id="sr:competitor:5463" name="HBW Balingen-Weilstetten"
+                            country="Germany" country_code="DEU" abbreviation="HBW" gender="male" />
+                        <competitor id="sr:competitor:6267" name="1. VfL Potsdam" country="Germany"
+                            country_code="DEU" abbreviation="POT" gender="male" />
+                        <competitor id="sr:competitor:6268" name="Bergischer HC" country="Germany"
+                            country_code="DEU" abbreviation="BHC" gender="male" />
+                        <competitor id="sr:competitor:6272" name="TVB Stuttgart" country="Germany"
+                            country_code="DEU" abbreviation="TVB" gender="male" />
+                        <competitor id="sr:competitor:6288" name="HC Erlangen" country="Germany"
+                            country_code="DEU" abbreviation="HCE" gender="male" />
+                        <competitor id="sr:competitor:6304" name="HSC 2000 Coburg" country="Germany"
+                            country_code="DEU" abbreviation="COB" gender="male" />
+                        <competitor id="sr:competitor:6320" name="TuS 04 KL-Dansenberg"
+                            country="Germany" country_code="DEU" abbreviation="KLD" gender="male" />
+                        <competitor id="sr:competitor:6325" name="VfL Eintracht Hagen"
+                            country="Germany" country_code="DEU" abbreviation="HAG" gender="male" />
+                        <competitor id="sr:competitor:7807" name="Wolfe Wurzburg" country="Germany"
+                            country_code="DEU" abbreviation="WUE" gender="male" />
+                        <competitor id="sr:competitor:7808" name="HC Elbflorenz 2006"
+                            country="Germany" country_code="DEU" abbreviation="ELB" gender="male" />
+                        <competitor id="sr:competitor:7962" name="SC DHfK Leipzig" country="Germany"
+                            country_code="DEU" abbreviation="LEI" gender="male" />
+                        <competitor id="sr:competitor:34839" name="TuS Furstenfeldbruck"
+                            country="Germany" country_code="DEU" abbreviation="FFB" gender="male" />
+                        <competitor id="sr:competitor:35361" name="SG Pforzheim/Eutingen"
+                            country="Germany" country_code="DEU" abbreviation="PFO" gender="male" />
+                        <competitor id="sr:competitor:211610" name="HSG Konstanz" country="Germany"
+                            country_code="DEU" abbreviation="KON" gender="male" />
+                        <competitor id="sr:competitor:528763" name="MTV Braunschweig"
+                            abbreviation="MTV" gender="male" />
+                        <competitor id="sr:competitor:914657" name="TuS Vinnhorst" country="Germany"
+                            country_code="DEU" abbreviation="VIN" gender="male" />
+                    </competitors>
+                </group>
+            </groups>
+        </stage>
+    </stages>
+</season_info>
