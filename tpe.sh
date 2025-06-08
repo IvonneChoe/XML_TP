@@ -1,6 +1,6 @@
 let prefix=$1
 let request_command="Invoke-WebRequest -Uri"
-let flags="-Headers @{ 'accept' = 'application/json'; 'x-api-key' = '${SPORTRADAR_API}' } -OutFile"
+let flags="-Headers @{ 'accept' = 'application/json'; 'x-api-key' = '$env:SPORTRADAR_API' } -OutFile"
 
 # bash flags: 
 # Tira error si no se pasan los parámetros necesarios.
@@ -14,7 +14,7 @@ fi
 # definido en el parámetro prefix. En caso de no haber ninguna temporada que cumpla dicha característica, debe devolver un string vacío.
 # C:\Users\ivonn\Documents\SaxonHE9-5-1-2J\ esto no tiene que estar para el saxon9he.jar
 
-java -cp saxon9he.jar  net.sf.saxon.Query -s:seasons_list.xml -q:extract_season_id.xq prefix="${prefix}"
+java -cp C:\Users\ivonn\Documents\SaxonHE9-5-1-2J\saxon9he.jar  net.sf.saxon.Query -s:seasons_list.xml -q:extract_season_id.xq prefix="${prefix}"
 
 # Dado un id de temporada (o season_id), este método devuelve características de la misma.
 # NOTE: sr%3Aseason%3AXXXXX --> modificar XXXXX por el id de temporada que se quiera consultar.

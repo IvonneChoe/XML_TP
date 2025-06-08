@@ -1,60 +1,42 @@
-(: Función para validar si un archivo existe y tiene contenido :)
-declare function local:file-exists($filename as xs:string) as xs:boolean {
-  exists(doc($filename)/*)
-};
-
 declare variable $prefix as xs:string external;
 
-let $info_exists := local:file-exists("season_info.xml")
-let $standings_exists := local:file-exists("season_standings.xml")
-(:let $list_exists := local:file-exists("seasons_list.xml"):)
+let $list := doc("seasons_list.xml")
+let $info := doc("season_info.xml")
+let $standings := doc("season_standings.xml")
 
-(: Main processing :)
-let $seasons := 
-  if (local:file-exists("seasons_list.xml")) then
-    doc("seasons_list.xml")//season
-  else ()
-
-let $matching_season := $seasons[starts-with(@name, $prefix)][1]
+let $matching_season := $list//*[local-name() = "season"][starts-with(@name, $prefix)][1]
 let $season_id := string($matching_season/@id)
 
 return
-<handball_data>
-{
   if ($prefix = "") then
-    <error>Prefix must not be empty</error>
+    <handball_data>
+      <error>Prefix must not be empty</error>
+    </handball_data>
   else if (empty($matching_season)) then
-    <error>No season found with the given prefix</error>
-  else if (not($info_exists) or not($standings_exists)) then
-    <error>Season info or standings data not available</error>
+    <handball_data>
+      <error>No season found with the given prefix</error>
+    </handball_data>
   else
-    let $season_info := doc("season_info.xml")//season
-    let $season_standings := doc("season_standings.xml")//season_standing[@type="total"]
-    
-    return (
-      <season>
-        <name>{string($season_info/@name)}</name>
-        <year>{string($season_info/@year)}</year>
-        <category>{string($season_info/category/@name)}</category>
-        <gender>{string($season_info/competition/@gender)}</gender>
-      </season>,
-      <competitors>
-      {
-        for $competitor in $season_info//competitor
-        let $competitor_id := string($competitor/@id)
-        let $competitor_standings := $season_standings//standing[competitor/@id = $competitor_id]
-        
-        return
-        <competitor name="{$competitor/@name}" country="{$competitor/@country}">
+    let $season_info := $info//*[local-name() = "season"][@id = $season_id]
+    let $season_name := $season_info/@name
+    let $season_year := $season_info/@year
+    let $season_category := $season_info/@category
+    let $season_gender := $season_info/@gender
+    let $groups := $standings//*[local-name() = "season_standing"][@type = "total"]//*[local-name() = "group"]
+    let $competitor_data :=
+      for $group in $groups
+      let $group_name := $group/@group_name
+      let $group_code := $group/@name
+      for $standing in $group//*[local-name() = "standing"]
+      let $competitor := $standing//*[local-name() = "competitor"]
+      let $name := $competitor/@name
+      let $country := $competitor/@country
+      return
+        <competitor name="{$name}" country="{$country}">
           <standings>
-          {
-            for $standing in $competitor_standings
-            let $group := $standing/parent::standings/parent::group
-            order by xs:integer($standing/@points) descending, xs:integer($standing/@goals_diff) ascending
-            return
-            <standing 
-              group_name_code="{$group/@group_name}"
-              group_name="{$group/@name}"
+            <standing
+              group_name_code="{$group_code}"
+              group_name="{$group_name}"
               rank="{$standing/@rank}"
               played="{$standing/@played}"
               win="{$standing/@win}"
@@ -63,12 +45,19 @@ return
               goals_for="{$standing/@goals_for}"
               goals_against="{$standing/@goals_against}"
               goals_diff="{$standing/@goals_diff}"
-              points="{$standing/@points}"/>
-          }
+              points="{$standing/@points}">stats</standing>
           </standings>
         </competitor>
-      }
-      </competitors>
-    )
-}
-</handball_data>
+
+    return
+      <handball_data>
+        <season>
+          <name>{string($season_name)}</name>
+          <year>{string($season_year)}</year>
+          <category>{string($season_category)}</category>
+          <gender>{string($season_gender)}</gender>
+        </season>
+        <competitors>
+          { $competitor_data }
+        </competitors>
+      </handball_data>
