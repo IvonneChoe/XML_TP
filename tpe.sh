@@ -7,6 +7,8 @@ fi
 
 if [[ -z "${SPORTRADAR_API}" ]]; then
   echo "SPORTRADAR_API environment variable not setted"
+else
+  echo "${SPORTRADAR_API} is your key"
 fi
 
 function download() {
@@ -36,8 +38,5 @@ download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A
 # C:\Users\ivonn\Documents\SaxonHE9-5-1-2J\ esto no tiene que estar para el saxon9he.jar
 java net.sf.saxon.Query -s:seasons_list.xml -q:extract_season_id.xq prefix="${prefix}"
 
-# season_id=$2
-
-
-java net.sf.saxon.Query -q:extract_handball_data.xq prefix="${prefix}" >> handball_data.xml 
+java net.sf.saxon.Query -q:extract_handball_data.xq prefix="${prefix}" > handball_data.xml 
 
