@@ -21,6 +21,8 @@ flags="--header \"accept: application/json\" --header \"x-api-key: ${SPORTRADAR_
 # C:\Users\ivonn\Documents\SaxonHE9-5-1-2J\ esto no tiene que estar para el saxon9he.jar
 java net.sf.saxon.Query -s:seasons_list.xml -q:extract_season_id.xq prefix="${prefix}"
 
+season_id=$2
+
 function download() {
   url=$1
   output_file_name=$2
@@ -29,9 +31,9 @@ function download() {
 
 # Dado un id de temporada (o season_id), este método devuelve características de la misma.
 # NOTE: sr%3Aseason%3AXXXXX --> modificar XXXXX por el id de temporada que se quiera consultar.
-download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A95495/info.xml" "season_info.xml"
+download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/info.xml" "season_info.xml"
 
 # Dado un id de temporada (o season_id), este método devuelve las estadísticas (tales como: puntos, goles a favor, goles en 
 # contra, diferencia de goles, partidos ganados, etc) de los equipos que compitieron en ella.
 # NOTE: sr%3Aseason%3AXXXXX --> modificar XXXXX por el id de temporada que se quiera consultar.
-download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A95495/standings.xml" "season_standings.xml"
+download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/standings.xml" "season_standings.xml"
