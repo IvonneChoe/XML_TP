@@ -32,3 +32,11 @@ download "${url}/info.xml" season_info.xml
 download "${url}/standings.xml" season_standings.xml
 
 extraction handball_data.xml extract_handball_data.xq $prefix > handball_data.xml
+
+touch hdata.tmp
+xmllint --format handball_data.xml -o hdata.tmp && mv hdata.tmp handball_data.xml
+
+INPUT="handball_data.xml"
+XSL="format.xsl"
+PDF="handball_page.pdf"
+fop -xml handball_data.xml -xsl format.xsl -foout salida.fo
