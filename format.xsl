@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:fo="http://www.w3.org/1999/XSL/Format"
-    version="2.0">
-    
-  <!-- Declaración de salida indentada -->
-  <xsl:output method="xml" indent="yes"/>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:output method="xml" indent="yes"/>
+    <xsl:strip-space elements="*"/>
 
-  <!-- Plantilla principal que transforma handball_data.xml a XSL-FO -->
-  <xsl:template match="/handball">
-    <!-- Raíz FO -->
-    <fo:root>
+    <xsl:template match="/">
+        <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+    
       <!-- Definición del maestro de página A4 con márgenes especificados -->
       <fo:layout-master-set>
         <fo:simple-page-master
