@@ -30,22 +30,22 @@
         </fo:block>
         <xsl:for-each select="handball_data//competitor">
           <fo:block font-size="12pt" space-before="6pt" space-after="6pt">
-            <xsl:value-of select="./@name"/>
-            <xsl:if test="./@country"> (<xsl:value-of select="./@country"/>)
+            <xsl:value-of select="@name"/>
+            <xsl:if test="@country"> (<xsl:value-of select="@country"/>)
           </xsl:if>
         </fo:block>
         <fo:table table-layout="fixed" width="100%" border="1pt solid black">
-          <fo:table-column column-width="40%"/>
-          <fo:table-column column-width="7%"/>
-          <fo:table-column column-width="7%"/>
-          <fo:table-column column-width="7%"/>
-          <fo:table-column column-width="7%"/>
-          <fo:table-column column-width="7%"/>
-          <fo:table-column column-width="7%"/>
-          <fo:table-column column-width="7%"/>
+          <fo:table-column column-number="1" column-width="40%"/>
+          <fo:table-column column-number="2" column-width="7%"/>
+          <fo:table-column column-number="3" column-width="7%"/>
+          <fo:table-column column-number="4" column-width="7%"/>
+          <fo:table-column column-number="5" column-width="7%"/>
+          <fo:table-column column-number="6" column-width="7%"/>
+          <fo:table-column column-number="7" column-width="7%"/>
+          <fo:table-column column-number="8" column-width="7%"/>
           <fo:table-header>
             <fo:table-row background-color="rgb(215,245,250)">
-              <fo:table-cell border="1pt solid black"><fo:block font-size="8pt">Group</fo:block></fo:table-cell>
+              <fo:table-cell><fo:block font-size="8pt">Group</fo:block></fo:table-cell>
               <fo:table-cell border="1pt solid black"><fo:block font-size="8pt">Rank</fo:block></fo:table-cell>
               <fo:table-cell border="1pt solid black"><fo:block font-size="8pt">Played</fo:block></fo:table-cell>
               <fo:table-cell border="1pt solid black"><fo:block font-size="8pt">Wins</fo:block></fo:table-cell>
@@ -57,8 +57,8 @@
           </fo:table-header>
           <fo:table-body>
             <xsl:for-each select="//standing">
-              <xsl:sort select="./number(@points)" order="descending" data-type="number"/>
-              <xsl:sort select="./number(@goals_diff)" order="ascending" data-type="number"/>
+              <xsl:sort select="number(@points)" order="descending" data-type="number"/>
+              <xsl:sort select="number(@goals_diff)" order="ascending" data-type="number"/>
               <fo:table-row>
                 <fo:table-cell border="1pt solid black"><fo:block font-size="8pt"><xsl:value-of select="group_name"/></fo:block></fo:table-cell>
                 <fo:table-cell border="1pt solid black"><fo:block font-size="8pt"><xsl:value-of select="rank"/></fo:block></fo:table-cell>

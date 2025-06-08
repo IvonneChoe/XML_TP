@@ -18,6 +18,11 @@ function download() {
 }
 
 prefix=$1
+INPUT="handball_data.xml"
+XSL="format.xsl"
+FO="handball_page.fo"
+PDF="handball_report.pdf"
+touch $INPUT $XSL $FO
 
 if [[ -z "$1" ]]; then
   echo "Prefix required, use: $0 <prefix>"
@@ -38,9 +43,5 @@ download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A
 extraction handball_data.xml extract_handball_data.xq $prefix > handball_data.xml
 xml_linter handball_data.xml
 
-INPUT="handball_data.xml"
-XSL="format.xsl"
-FO="handball_page.fo"
-PDF="handball_report.pdf"
 fop -xml $INPUT -xsl $XSL -foout $FO
 fop -fo $FO -pdf $PDF
