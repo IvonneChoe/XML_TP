@@ -1,4 +1,5 @@
 *.fo
+*.pdf
 handball_data.xml
 season_info.xml
 season_standings.xml
