@@ -20,7 +20,7 @@
     <fo:page-sequence master-reference="A4">
       <!-- Encabezado estático en la zona superior -->
       <fo:static-content flow-name="xsl-region-before">
-        <fo:block font-size="10pt" text-align="center">
+        <fo:block font-size="10pt" text-align="end">
           <xsl:value-of select="handball_data/season/category"/> Handball season for <xsl:value-of select="handball_data/season/gender"/> - <xsl:value-of select="handball_data/season/year"/>
         </fo:block>
       </fo:static-content>
@@ -43,31 +43,31 @@
           <fo:table-column column-width="7%"/>
           <fo:table-column column-width="7%"/>
           <fo:table-column column-width="7%"/>
-          <fo:table-header>
-            <fo:table-row background-color="rgb(215,245,250)">
+          <fo:table-header text-align="center">
+            <fo:table-row background-color="rgb(215,245,250)" text-align="center">
               <fo:table-cell><fo:block font-size="8pt">Group</fo:block></fo:table-cell>
-              <fo:table-cell border="1pt solid black"><fo:block font-size="8pt">Rank</fo:block></fo:table-cell>
-              <fo:table-cell border="1pt solid black"><fo:block font-size="8pt">Played</fo:block></fo:table-cell>
-              <fo:table-cell border="1pt solid black"><fo:block font-size="8pt">Wins</fo:block></fo:table-cell>
-              <fo:table-cell border="1pt solid black"><fo:block font-size="8pt">Loss</fo:block></fo:table-cell>
-              <fo:table-cell border="1pt solid black"><fo:block font-size="8pt">Draws</fo:block></fo:table-cell>
-              <fo:table-cell border="1pt solid black"><fo:block font-size="8pt">Goals Diff</fo:block></fo:table-cell>
-              <fo:table-cell border="1pt solid black"><fo:block font-size="8pt">Points</fo:block></fo:table-cell>
+              <fo:table-cell><fo:block font-size="8pt">Rank</fo:block></fo:table-cell>
+              <fo:table-cell><fo:block font-size="8pt">Played</fo:block></fo:table-cell>
+              <fo:table-cell><fo:block font-size="8pt">Wins</fo:block></fo:table-cell>
+              <fo:table-cell><fo:block font-size="8pt">Loss</fo:block></fo:table-cell>
+              <fo:table-cell><fo:block font-size="8pt">Draws</fo:block></fo:table-cell>
+              <fo:table-cell><fo:block font-size="8pt">Goals Diff</fo:block></fo:table-cell>
+              <fo:table-cell><fo:block font-size="8pt">Points</fo:block></fo:table-cell>
             </fo:table-row>
           </fo:table-header>
-          <fo:table-body>
+          <fo:table-body text-align="center">
             <xsl:for-each select="standings/standing">
               <xsl:sort select="number(@points)" order="descending" data-type="number"/>
               <xsl:sort select="number(@goals_diff)" order="ascending" data-type="number"/>
               <fo:table-row>
-                <fo:table-cell border="1pt solid black"><fo:block font-size="8pt"><xsl:value-of select="@group_name"/></fo:block></fo:table-cell>
-                <fo:table-cell border="1pt solid black"><fo:block font-size="8pt"><xsl:value-of select="@rank"/></fo:block></fo:table-cell>
-                <fo:table-cell border="1pt solid black"><fo:block font-size="8pt"><xsl:value-of select="@played"/></fo:block></fo:table-cell>
-                <fo:table-cell border="1pt solid black"><fo:block font-size="8pt"><xsl:value-of select="@win"/></fo:block></fo:table-cell>
-                <fo:table-cell border="1pt solid black"><fo:block font-size="8pt"><xsl:value-of select="@loss"/></fo:block></fo:table-cell>
-                <fo:table-cell border="1pt solid black"><fo:block font-size="8pt"><xsl:value-of select="@draw"/></fo:block></fo:table-cell>
-                <fo:table-cell border="1pt solid black"><fo:block font-size="8pt"><xsl:value-of select="@goals_diff"/></fo:block></fo:table-cell>
-                <fo:table-cell border="1pt solid black"><fo:block font-size="8pt"><xsl:value-of select="@points"/></fo:block></fo:table-cell>
+                <fo:table-cell><fo:block font-size="8pt"><xsl:value-of select="@group_name"/></fo:block></fo:table-cell>
+                <fo:table-cell><fo:block font-size="8pt"><xsl:value-of select="@rank"/></fo:block></fo:table-cell>
+                <fo:table-cell><fo:block font-size="8pt"><xsl:value-of select="@played"/></fo:block></fo:table-cell>
+                <fo:table-cell><fo:block font-size="8pt"><xsl:value-of select="@win"/></fo:block></fo:table-cell>
+                <fo:table-cell><fo:block font-size="8pt"><xsl:value-of select="@loss"/></fo:block></fo:table-cell>
+                <fo:table-cell><fo:block font-size="8pt"><xsl:value-of select="@draw"/></fo:block></fo:table-cell>
+                <fo:table-cell><fo:block font-size="8pt"><xsl:value-of select="@goals_diff"/></fo:block></fo:table-cell>
+                <fo:table-cell><fo:block font-size="8pt"><xsl:value-of select="@points"/></fo:block></fo:table-cell>
               </fo:table-row>
             </xsl:for-each>
           </fo:table-body>
