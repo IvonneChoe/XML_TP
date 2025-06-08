@@ -17,15 +17,22 @@ function extraction() {
   java net.sf.saxon.Query -s:$out -q:$query prefix="${prefix}"
 }
 
+function xml_linter() {
+  file=$1
+  touch hdata.tmp
+  xmllint --format $file -o hdata.tmp && mv hdata.tmp $file
+}
+
 function download() {
   url=$1
   output_file=$2
   curl -X GET "${url}" --header 'accept: application/xml' --header "x-api-key: ${SPORTRADAR_API}" > $output_file
+  xml_linter $output_file
 }
 
 season_id=$(extraction seasons_list.xml extract_season_id.xq $prefix | egrep -o 'season:\d+$' | egrep -o '\d+$')
 
-url="https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}"
+url="https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/"
 
 download "${url}/info.xml" season_info.xml
 
@@ -33,8 +40,7 @@ download "${url}/standings.xml" season_standings.xml
 
 extraction handball_data.xml extract_handball_data.xq $prefix > handball_data.xml
 
-touch hdata.tmp
-xmllint --format handball_data.xml -o hdata.tmp && mv hdata.tmp handball_data.xml
+xml_linter handball_data.xml
 
 INPUT="handball_data.xml"
 XSL="format.xsl"
