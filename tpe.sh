@@ -25,7 +25,7 @@ function download() {
 
 season_id=$(extraction seasons_list.xml extract_season_id.xq $prefix | egrep -o 'season:\d+$' | egrep -o '\d+$')
 
-url="https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/"
+url="https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}"
 
 download "${url}/info.xml" season_info.xml
 

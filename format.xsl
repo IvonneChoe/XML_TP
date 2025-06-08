@@ -26,11 +26,11 @@
         <!-- Encabezado estático en la zona superior -->
         <fo:static-content flow-name="xsl-region-before">
           <fo:block font-size="10pt" text-align="center">
-            <xsl:value-of select="handball/season/@category"/>
+            <xsl:value-of select="handball_data/season/@category"/>
             Handball season for
-            <xsl:value-of select="handball/season/@gender"/>
+            <xsl:value-of select="handball_data/season/@gender"/>
             -
-            <xsl:value-of select="handball/season/@year"/>
+            <xsl:value-of select="handball_data/season/@year"/>
           </fo:block>
         </fo:static-content>
 
@@ -39,11 +39,11 @@
 
           <!-- Título de la sección -->
           <fo:block font-size="16pt" space-after="12pt">
-            Competitors of <xsl:value-of select="handball/season/@name"/>
+            Competitors of <xsl:value-of select="handball_data/season/@name"/>
           </fo:block>
 
           <!-- Iterar cada competidor -->
-          <xsl:for-each select="handball/season/competitor">
+          <xsl:for-each select="handball_data/season/competitor">
             <!-- Nombre y país del competidor -->
             <fo:block font-size="12pt" space-before="6pt" space-after="6pt">
               <xsl:value-of select="name"/>
