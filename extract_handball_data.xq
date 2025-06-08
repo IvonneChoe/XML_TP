@@ -1,20 +1,18 @@
+declare namespace h="http://schemas.sportradar.com/sportsapi/handball/v2";
+
+declare variable $prefix as xs:string external;
+
 (: Función para validar si un archivo existe y tiene contenido :)
 declare function local:file-exists($filename as xs:string) as xs:boolean {
   exists(doc($filename)/*)
 };
 
-declare variable $prefix as xs:string external;
-
 let $info_exists := local:file-exists("season_info.xml")
 let $standings_exists := local:file-exists("season_standings.xml")
-(:let $list_exists := local:file-exists("seasons_list.xml"):)
+let $list_exists := local:file-exists("seasons_list.xml")
 
 (: Main processing :)
-let $seasons := 
-  if (local:file-exists("seasons_list.xml")) then
-    doc("seasons_list.xml")//season
-  else ()
-
+let $seasons := doc("seasons_list.xml")//season
 let $matching_season := $seasons[starts-with(@name, $prefix)][1]
 let $season_id := string($matching_season/@id)
 
@@ -28,28 +26,29 @@ return
   else if (not($info_exists) or not($standings_exists)) then
     <error>Season info or standings data not available</error>
   else
-    let $season_info := doc("season_info.xml")//season
-    let $season_standings := doc("season_standings.xml")//season_standing[@type="total"]
+    let $season_info := doc("season_info.xml")//h:season[@id = $season_id]
+    let $season_standings := doc("season_standings.xml")//h:season_standing[@type="total"]
     
     return (
       <season>
         <name>{string($season_info/@name)}</name>
         <year>{string($season_info/@year)}</year>
-        <category>{string($season_info/category/@name)}</category>
-        <gender>{string($season_info/competition/@gender)}</gender>
+        <category>{string($season_info/h:category/@name)}</category>
+        <gender>{string($season_info/h:competition/@gender)}</gender>
       </season>,
       <competitors>
       {
-        for $competitor in $season_info//competitor
+        (:Esto estaba mal, no existe competitor en season_info:)
+        for $competitor in $season_info/..//h:competitor
         let $competitor_id := string($competitor/@id)
-        let $competitor_standings := $season_standings//standing[competitor/@id = $competitor_id]
+        let $competitor_standings := $season_standings//h:standing[h:competitor/@id = $competitor_id]
         
         return
         <competitor name="{$competitor/@name}" country="{$competitor/@country}">
           <standings>
           {
             for $standing in $competitor_standings
-            let $group := $standing/parent::standings/parent::group
+            let $group := $standing/parent::h:standings/parent::h:group
             order by xs:integer($standing/@points) descending, xs:integer($standing/@goals_diff) ascending
             return
             <standing 
