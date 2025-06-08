@@ -11,6 +11,12 @@ else
   echo "${SPORTRADAR_API} is your key"
 fi
 
+function extraction() {
+  out=$1
+  query=$2
+  xmllint --foramt (java net.sf.saxon.Query -s:$out -q:$query prefix="${prefix}") out
+}
+
 function download() {
   url=$1
   output_file_name=$2
