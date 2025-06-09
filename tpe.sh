@@ -20,7 +20,7 @@ function download() {
 
 function grepper() {
   if [[ $(echo $SHELL) == "/bin/bash" ]]; then
-    grep $grep_flags 'season:\K\d+$'
+    grep -oP 'season:\K\d+$'
   else
     grep -Eo 'season:\d+$' | grep -Eo '\d+$'
   fi
