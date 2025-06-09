@@ -18,6 +18,14 @@ function download() {
   xml_linter $output_file
 }
 
+function grepper() {
+  if [[ $(echo $SHELL) == "/bin/bash" ]]; then
+    grep $grep_flags 'season:\K\d+$'
+  else
+    grep -Eo 'season:\d+$' | grep -Eo '\d+$'
+  fi
+}
+
 prefix=$1
 INPUT="handball_data.xml"
 LIST="seasons_list.xml"
@@ -36,13 +44,7 @@ fi
 
 download "https://api.sportradar.com/handball/trial/v2/en/seasons.xml" $LIST
 
-if [[ $(echo $SHELL) == "/bin/bash" ]]; then
-  season_id=$(extraction $LIST extract_season_id.xq $prefix | grep -oP 'season:\K\d+$')
-else
-  season_id=$(extraction $LIST extract_season_id.xq $prefix | grep -Eo 'season:\d+$' | grep -Eo '\d+$')
-fi
-
-
+season_id=$(extraction $LIST extract_season_id.xq $prefix | grepper)
 
 download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/info.xml" $INFO
 download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/standings.xml" $STANDINGS
