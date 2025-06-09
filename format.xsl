@@ -13,8 +13,9 @@
         margin-bottom="2cm"
         margin-left="1.5cm"
         margin-right="1.5cm">
-        <fo:region-body/>
-        <fo:region-before extent="1cm"/>
+        <fo:region-body margin-top="1cm"/> 
+        <fo:region-before extent="1cm"/> 
+        <fo:region-after extent="1.5cm"/> 
       </fo:simple-page-master>
     </fo:layout-master-set>
     <fo:page-sequence master-reference="A4">
