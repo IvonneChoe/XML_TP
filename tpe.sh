@@ -36,7 +36,13 @@ fi
 
 download "https://api.sportradar.com/handball/trial/v2/en/seasons.xml" $LIST
 
-season_id=$(extraction $LIST extract_season_id.xq $prefix | grep -Eo 'season:\d+$' | grep -Eo '\d+$')
+if [[ $SHELL -eq "/bin/bash" ]]; then
+  season_id=$(extraction $LIST extract_season_id.xq $prefix | grep -oP 'season:\d+$' | grep -oP '\d+$')
+else
+  season_id=$(extraction $LIST extract_season_id.xq $prefix | grep -Eo 'season:\d+$' | grep -Eo '\d+$')
+fi
+
+
 
 download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/info.xml" $INFO
 download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/standings.xml" $STANDINGS
