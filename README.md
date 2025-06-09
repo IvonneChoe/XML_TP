@@ -1,6 +1,4 @@
-# DISEÑO Y PROCESAMIENTO DE DOCUMENTOS XML
-
-## **TRABAJO PRÁCTICO ESPECIAL**
+# **Trabajo Practico** - Diseño y procesamiento de documentos XML
 
 **GARCÍA VAUTRIN RAGGIO, JUAN IGNACIO \- 63319**
 
@@ -12,9 +10,7 @@
 
 **2025**
 
-# 
-
-# INTRODUCCIÓN
+## Introducción
 
 ### Instrucciones de uso
 1. Set environment variable
@@ -29,7 +25,7 @@
 
 Este informe describe la implementación de un sistema para la consulta y transformación de documentos XML, centrado en datos de competiciones de Handball provistos por la API de SportRadar. El proceso abarca la extracción de información sobre temporadas, equipos y estadísticas; su posterior estructuración en un documento XML intermedio (handball\_data.xml); y finalmente, la generación de un documento XSL-FO (handball\_page.fo), que se convierte en un informe PDF (handball\_report.pdf) utilizando Apache FOP. El objetivo es demostrar la aplicación práctica de XQuery y XSLT para manipular y presentar datos complejos de manera automatizada y estructurada.
 
-# DESARROLLO
+## Desarrollo
 
 El sistema toma como parámetro un string (`prefix`) que define el prefijo del nombre de una temporada. Luego, se siguen los siguientes pasos:
 
@@ -55,7 +51,7 @@ Aunque algunos integrantes ya contaban con conocimientos previos sobre temas no 
 
 Para el desarrollo del trabajo no dividimos el código en módulos asignados, sino que preferimos trabajar de forma colaborativa en todas las etapas del proyecto, como venimos haciendo en trabajos anteriores. Esta metodología nos resultó efectiva para mantener la coherencia y calidad del desarrollo.
 
-# CONCLUSIÓN
+## Conclusión
 
 El trabajo permitió integrar múltiples herramientas del ecosistema XML, desde la consulta dinámica a APIs hasta la generación de documentos formateados. Se evidenció la importancia de la interoperabilidad entre las distintas etapas (XQuery → XML → XSLT → FO → PDF).
 
