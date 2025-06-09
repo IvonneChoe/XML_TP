@@ -1,5 +1,8 @@
 function extraction() {
-  java net.sf.saxon.Query -s:$1 -q:$2 prefix=$3
+  out=$1
+  query=$2
+  pf=$3
+  java net.sf.saxon.Query -s:$out -q:$query prefix="${pf}"
 }
 
 function xml_linter() {
@@ -33,7 +36,7 @@ fi
 
 download "https://api.sportradar.com/handball/trial/v2/en/seasons.xml" $LIST
 
-season_id=$(extraction $LIST extract_season_id.xq $prefix | egrep -o 'season:\d+$' | egrep -o '\d+$')
+season_id=$(extraction $LIST extract_season_id.xq $prefix | grep -Eo 'season:\d+$' | grep -Eo '\d+$')
 
 download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/info.xml" $INFO
 download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/standings.xml" $STANDINGS
