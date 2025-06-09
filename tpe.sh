@@ -36,7 +36,7 @@ fi
 
 download "https://api.sportradar.com/handball/trial/v2/en/seasons.xml" $LIST
 
-if [[ $SHELL -eq "/bin/bash" ]]; then
+if [[ $(echo $SHELL) -eq "/bin/bash" ]]; then
   season_id=$(extraction $LIST extract_season_id.xq $prefix | grep -oP 'season:\K\d+$')
 else
   season_id=$(extraction $LIST extract_season_id.xq $prefix | grep -Eo 'season:\d+$' | grep -Eo '\d+$')
