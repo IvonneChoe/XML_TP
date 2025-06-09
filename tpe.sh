@@ -24,11 +24,6 @@ FO="handball_page.fo"
 PDF="handball_report.pdf"
 touch $INPUT $XSL $FO
 
-if [[ -z "$1" ]]; then
-  echo "Prefix required, use: $0 <prefix>"
-  exit 1
-fi
-
 if [[ -z "${SPORTRADAR_API}" ]]; then
   echo 'SPORTRADAR_API environment variable not setted'
 else

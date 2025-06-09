@@ -19,15 +19,21 @@
       </fo:simple-page-master>
     </fo:layout-master-set>
     <fo:page-sequence master-reference="A4">
-      <!-- Encabezado estático en la zona superior -->
-      <fo:static-content flow-name="xsl-region-before">
-        <fo:block font-size="10pt" text-align="end">
-          <xsl:value-of select="handball_data/season/category"/> Handball season for <xsl:value-of select="handball_data/season/gender"/> - <xsl:value-of select="handball_data/season/year"/>
-        </fo:block>
-      </fo:static-content>
-      <fo:flow flow-name="xsl-region-body">
+      <!-- <fo:static-content flow-name="xsl-region-before"> -->
+        <fo:flow flow-name="xsl-region-body">
+          <fo:block font-size="10pt" text-align="end">
+            <xsl:if test="handball_data/season">
+              <xsl:value-of select="handball_data/season/category"/> Handball season for <xsl:value-of select="handball_data/season/gender"/> - <xsl:value-of select="handball_data/season/year"/>
+            </xsl:if>
+          </fo:block>
+          <!-- </fo:static-content> -->
         <fo:block font-size="16pt" space-after="12pt">
-          Competitors of <xsl:value-of select="handball_data/season/name"/>
+          <xsl:if test="handball_data/error"> 
+            <xsl:value-of select="//error"/>
+          </xsl:if>
+          <xsl:if test="handball_data/season">
+            Competitors of <xsl:value-of select="handball_data/season/name"/>
+          </xsl:if>
         </fo:block>
         <xsl:for-each select="handball_data//competitor">
           <fo:block font-size="12pt" space-before="6pt" space-after="6pt">
@@ -77,5 +83,5 @@
     </fo:flow>
   </fo:page-sequence>
 </fo:root>
-  </xsl:template>
+</xsl:template>
 </xsl:stylesheet>
