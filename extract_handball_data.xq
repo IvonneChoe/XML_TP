@@ -23,7 +23,7 @@ return
     <error>Prefix must not be empty</error>
   else if (empty($matching_season)) then
     <error>No season found with the given prefix</error>
-  else if (not($info_exists) or not($standings_exists)) then
+  else if (not($info_exists) or not($standings_exists) or empty(doc("season_standings.xml")//h:season_standing)) then
     <error>Season info or standings data not available</error>
   else
     let $season_info := doc("season_info.xml")//h:season[@id = $season_id]
