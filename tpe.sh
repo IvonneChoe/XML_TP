@@ -1,8 +1,5 @@
 function extraction() {
-  out=$1
-  query=$2
-  pf=$3
-  java net.sf.saxon.Query -s:$out -q:$query prefix="${pf}"
+  java net.sf.saxon.Query -s:$1 -q:$2 prefix=$3
 }
 
 function xml_linter() {
