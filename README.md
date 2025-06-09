@@ -1,7 +1,22 @@
-# TPE XML
-_Note_: Unix system required
+# DISEÑO Y PROCESAMIENTO DE DOCUMENTOS XML
 
-### Instructions
+## **TRABAJO PRÁCTICO ESPECIAL**
+
+**GARCÍA VAUTRIN RAGGIO, JUAN IGNACIO \- 63319**
+
+**NASO RODRÍGUEZ, GERÓNIMO** \- **64177**
+
+**CHOE, IVONNE SAMANTA** \- **64880**
+
+**GRUPO 2**
+
+**2025**
+
+# 
+
+# INTRODUCCIÓN
+
+### Instrucciones de uso
 1. Set environment variable
     ```sh
     export SPORTRADAR_API=YOUR_API_KEY
@@ -11,3 +26,41 @@ _Note_: Unix system required
     ```sh
     chmod +x tpe.sh
     ```
+
+Este informe describe la implementación de un sistema para la consulta y transformación de documentos XML, centrado en datos de competiciones de Handball provistos por la API de SportRadar. El proceso abarca la extracción de información sobre temporadas, equipos y estadísticas; su posterior estructuración en un documento XML intermedio (handball\_data.xml); y finalmente, la generación de un documento XSL-FO (handball\_page.fo), que se convierte en un informe PDF (handball\_report.pdf) utilizando Apache FOP. El objetivo es demostrar la aplicación práctica de XQuery y XSLT para manipular y presentar datos complejos de manera automatizada y estructurada.
+
+# DESARROLLO
+
+El sistema toma como parámetro un string (`prefix`) que define el prefijo del nombre de una temporada. Luego, se siguen los siguientes pasos:
+
+* Obtener los archivos XML:
+
+  * `seasons_list.xml`
+
+  * `season_info.xml`
+
+  * `season_standings.xml`  
+* Ejecutar la consulta `extract_season_id.xq` para obtener el `season_id` correspondiente al prefix.  
+* Generar los archivos `season_info.xml` y `season_standings.xml` mediante llamadas a la API, usando el `season_id` obtenido.  
+* Ejecutar `extract_handball_data.xq` para combinar los datos en un único XML: `handball_data.xml`.  
+* Aplicar `generate_fo.xsl` para transformar ese XML en un archivo XSL-FO: `handball_page.fo`.  
+* Utilizar Apache FOP para convertir el archivo FO en un PDF final: `handball_report.pdf`.  
+* Automatizar todo el proceso con un script Bash (`tpe.sh`) que recibe como parámetro el `prefix`.
+
+También se implementó el manejo de errores. Si el `prefix` no es válido o no se encuentra ninguna temporada, el valor de retorno es un string vacío y el XML final contiene un nodo `<error>`, que se refleja en el PDF.
+
+Una de las principales dificultades que tuvimos como grupo fue lidiar con errores sutiles, muchas veces poco visibles o no tan intuitivos, lo que nos obligó a revisar el código línea por línea en varias ocasiones. Esto ocupó una parte significativa de nuestras reuniones.
+
+Aunque algunos integrantes ya contaban con conocimientos previos sobre temas no tratados en clase, tuvimos que investigar puntualmente sobre el formateo de XML y la estructura del lenguaje XSL-FO para poder generar un documento PDF con Apache FOP.
+
+Para el desarrollo del trabajo no dividimos el código en módulos asignados, sino que preferimos trabajar de forma colaborativa en todas las etapas del proyecto, como venimos haciendo en trabajos anteriores. Esta metodología nos resultó efectiva para mantener la coherencia y calidad del desarrollo.
+
+# CONCLUSIÓN
+
+El trabajo permitió integrar múltiples herramientas del ecosistema XML, desde la consulta dinámica a APIs hasta la generación de documentos formateados. Se evidenció la importancia de la interoperabilidad entre las distintas etapas (XQuery → XML → XSLT → FO → PDF).
+
+También quedó demostrado que una estructura de trabajo colaborativa mejora significativamente la integración entre componentes y la capacidad de resolución de problemas.
+
+La solución final desarrollada es genérica y robusta, permitiendo generar reportes distintos simplemente modificando el prefix de entrada. Además, el sistema es capaz de detectar errores lo que mejora la experiencia de uso y la mantenibilidad del proyecto.
+
+[image1]: <data:image/png;base64,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>
