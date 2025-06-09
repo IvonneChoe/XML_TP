@@ -12,7 +12,7 @@ let $standings_exists := local:file-exists("season_standings.xml")
 let $list_exists := local:file-exists("seasons_list.xml")
 
 (: Main processing :)
-let $seasons := doc("seasons_list.xml")//season
+let $seasons := doc("seasons_list.xml")//h:season
 let $matching_season := $seasons[starts-with(@name, $prefix)][1]
 let $season_id := string($matching_season/@id)
 

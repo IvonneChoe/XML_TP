@@ -1,7 +1,8 @@
 function extraction() {
   out=$1
   query=$2
-  java net.sf.saxon.Query -s:$out -q:$query prefix="${prefix}"
+  pf=$3
+  java net.sf.saxon.Query -s:$out -q:$query prefix="${pf}"
 }
 
 function xml_linter() {
@@ -19,10 +20,13 @@ function download() {
 
 prefix=$1
 INPUT="handball_data.xml"
+LIST="seasons_list.xml"
+INFO="season_info.xml"
+STANDINGS="season_standings.xml"
 XSL="format.xsl"
 FO="handball_page.fo"
 PDF="handball_report.pdf"
-touch $INPUT $XSL $FO
+touch $INPUT $XSL $FO $INFO $STANDINGS
 
 if [[ -z "${SPORTRADAR_API}" ]]; then
   echo 'SPORTRADAR_API environment variable not setted'
@@ -30,13 +34,15 @@ else
   echo "${SPORTRADAR_API} is your key"
 fi
 
-season_id=$(extraction seasons_list.xml extract_season_id.xq $prefix | egrep -o 'season:\d+$' | egrep -o '\d+$')
+download "https://api.sportradar.com/handball/trial/v2/en/seasons.xml" $LIST
 
-download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/info.xml" season_info.xml
-download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/standings.xml" season_standings.xml
+season_id=$(extraction $LIST extract_season_id.xq $prefix | egrep -o 'season:\d+$' | egrep -o '\d+$')
 
-extraction handball_data.xml extract_handball_data.xq $prefix > handball_data.xml
-xml_linter handball_data.xml
+download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/info.xml" $INFO
+download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/standings.xml" $STANDINGS
+
+extraction $INPUT extract_handball_data.xq $prefix > $INPUT
+xml_linter $INPUT
 
 fop -xml $INPUT -xsl $XSL -foout $FO
 fop -fo $FO -pdf $PDF
