@@ -2,7 +2,8 @@ function extraction() {
   out=$1
   query=$2
   pf=$3
-  java net.sf.saxon.Query -s:$out -q:$query prefix="${pf}"
+  id=$4
+  java net.sf.saxon.Query -s:$out -q:$query prefix="${pf}" season_id="sr:season:${id}"
 }
 
 function xml_linter() {
@@ -51,7 +52,7 @@ season_id=$(extraction $ORDERED_LIST extract_season_id.xq $prefix | grepper)
 download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/info.xml" $INFO
 download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/standings.xml" $STANDINGS
 
-extraction $INPUT extract_handball_data.xq $prefix > $INPUT
+extraction $INPUT extract_handball_data.xq $prefix $season_id > $INPUT
 xml_linter $INPUT
 
 fop -xml $INPUT -xsl $XSL_DATA -foout $FO
