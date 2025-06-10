@@ -36,7 +36,6 @@ return
       </season>,
       <competitors>
       {
-        (:Esto estaba mal, no existe competitor en season_info:)
         for $competitor in $season_info/..//h:competitor
         let $competitor_id := string($competitor/@id)
         let $competitor_standings := $season_standings//h:standing[h:competitor/@id = $competitor_id]
