@@ -8,7 +8,7 @@ declare function local:file-exists($filename as xs:string) as xs:boolean {
 
 let $info_exists := local:file-exists("season_info.xml")
 let $standings_exists := local:file-exists("season_standings.xml")
-let $list_exists := local:file-exists("ordered_sesons_list.xml")
+let $list_exists := local:file-exists("ordered_seasons_list.xml")
 
 let $seasons := doc("ordered_seasons_list.xml")//season
 let $matching_season := $seasons[starts-with(@name, $prefix)][1]
