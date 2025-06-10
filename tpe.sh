@@ -49,8 +49,6 @@ xsltproc $XSL_ID $LIST > $ORDERED_LIST
 
 season_id=$(extraction $ORDERED_LIST extract_season_id.xq $prefix | grepper)
 
-echo $season_id
-
 download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/info.xml" $INFO
 download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/standings.xml" $STANDINGS
 
