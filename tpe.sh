@@ -26,7 +26,7 @@ ORDERED_LIST="ordered_seasons_list.xml"
 INFO="season_info.xml"
 STANDINGS="season_standings.xml"
 FO="handball_page.fo"
-XSL_DATA="format.xsl"
+XSL_DATA="generate_fo.xsl"
 XSL_ID="order_seasons_list.xsl"
 PDF="handball_report.pdf"
 touch $INPUT $ORDERED_LIST $LIST $FO $INFO $STANDINGS
