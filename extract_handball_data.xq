@@ -3,7 +3,6 @@ declare namespace h="http://schemas.sportradar.com/sportsapi/handball/v2";
 declare variable $prefix as xs:string external;
 declare variable $season_id as xs:string external;
 
-(: Función para validar si un archivo existe y tiene contenido :)
 declare function local:file-exists($filename as xs:string) as xs:boolean {
   exists(doc($filename)/*)
 };
@@ -12,8 +11,7 @@ let $info_exists := local:file-exists("season_info.xml")
 let $standings_exists := local:file-exists("season_standings.xml")
 let $list_exists := local:file-exists("ordered_seasons_list.xml")
 
-(: Main processing :)
-let $seasons := doc("seasons_list.xml")//h:season
+let $seasons := doc("ordered_seasons_list.xml")//season
 let $matching_season := $seasons[starts-with(@name, $prefix)][1]
 
 return
@@ -38,7 +36,6 @@ return
       </season>,
       <competitors>
       {
-        (:Esto estaba mal, no existe competitor en season_info:)
         for $competitor in $season_info/..//h:competitor
         let $competitor_id := string($competitor/@id)
         let $competitor_standings := $season_standings//h:standing[h:competitor/@id = $competitor_id]

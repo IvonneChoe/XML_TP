@@ -30,12 +30,14 @@ function grepper() {
 prefix=$1
 INPUT="handball_data.xml"
 LIST="seasons_list.xml"
+ORDERED_LIST="ordered_seasons_list.xml"
 INFO="season_info.xml"
 STANDINGS="season_standings.xml"
-XSL="format.xsl"
+XSL_DATA="format.xsl"
+XSL_ID="order_seasons_list.xsl"
 FO="handball_page.fo"
 PDF="handball_report.pdf"
-touch $INPUT $XSL $FO $INFO $STANDINGS
+touch $INPUT $ORDERED_LIST $LIST $FO $INFO $STANDINGS
 
 if [[ -z "${SPORTRADAR_API}" ]]; then
   echo 'SPORTRADAR_API environment variable not setted'
@@ -43,7 +45,11 @@ fi
 
 download "https://api.sportradar.com/handball/trial/v2/en/seasons.xml" $LIST
 
-season_id=$(extraction $LIST extract_season_id.xq $prefix | grepper)
+xsltproc $XSL_ID $LIST > $ORDERED_LIST
+
+season_id=$(extraction $ORDERED_LIST extract_season_id.xq $prefix | grepper)
+
+echo $season_id
 
 download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/info.xml" $INFO
 download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/standings.xml" $STANDINGS
@@ -51,5 +57,5 @@ download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A
 extraction $INPUT extract_handball_data.xq $prefix $season_id > $INPUT
 xml_linter $INPUT
 
-fop -xml $INPUT -xsl $XSL -foout $FO
+fop -xml $INPUT -xsl $XSL_DATA -foout $FO
 fop -fo $FO -pdf $PDF
