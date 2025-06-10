@@ -1,14 +1,10 @@
-declare namespace h= "http://schemas.sportradar.com/sportsapi/handball/v2";
+declare namespace h="http://schemas.sportradar.com/sportsapi/handball/v2";
 declare variable $prefix as xs:string external;
 
-let $seasons := doc("seasons_list.xml")//h:season[starts-with(@name, $prefix)]
-
-let $sorted := for $season in $seasons
-               order by $season/@start_date ascending
-               return $season
+let $season := doc("seasons_list.xml")//h:season[starts-with(@name, $prefix)][1]
 
 return
-  if (exists($sorted)) then
-    data($sorted/@id)
+  if (exists($season)) then
+    data($season/@id)
   else
     ""
