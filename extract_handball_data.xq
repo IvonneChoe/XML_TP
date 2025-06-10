@@ -1,6 +1,7 @@
 declare namespace h="http://schemas.sportradar.com/sportsapi/handball/v2";
 
 declare variable $prefix as xs:string external;
+declare variable $season_id as xs:string external;
 
 declare function local:file-exists($filename as xs:string) as xs:boolean {
   exists(doc($filename)/*)
@@ -12,7 +13,6 @@ let $list_exists := local:file-exists("ordered_sesons_list.xml")
 
 let $seasons := doc("ordered_seasons_list.xml")//season
 let $matching_season := $seasons[starts-with(@name, $prefix)][1]
-let $season_id := string($matching_season/@id)
 
 return
 <handball_data>
