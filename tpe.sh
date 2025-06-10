@@ -38,8 +38,6 @@ touch $INPUT $XSL $FO $INFO $STANDINGS
 
 if [[ -z "${SPORTRADAR_API}" ]]; then
   echo 'SPORTRADAR_API environment variable not setted'
-else
-  echo "${SPORTRADAR_API} is your key"
 fi
 
 download "https://api.sportradar.com/handball/trial/v2/en/seasons.xml" $LIST
