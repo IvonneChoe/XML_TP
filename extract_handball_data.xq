@@ -36,7 +36,8 @@ return
       </season>,
       <competitors>
       {
-        for $competitor in $season_info/..//h:competitor
+        let $stage := $season_info/..//h:stage[@phase="regular season"]
+        for $competitor in $stage//h:competitor
         let $competitor_id := string($competitor/@id)
         let $competitor_standings := $season_standings//h:standing[h:competitor/@id = $competitor_id]
         

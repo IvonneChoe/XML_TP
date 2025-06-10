@@ -36,7 +36,9 @@
           </xsl:if>
         </fo:block>
 
-        <xsl:for-each select="handball_data//competitor">
+        <xsl:for-each select="handball_data/competitors/competitor">
+          <xsl:sort select="standings/standing/number(@points)" order="descending" data-type="number"/>
+          <xsl:sort select="standings/standing/number(@goals_diff)" order="ascending" data-type="number"/>
 
           <fo:block font-size="12pt" space-before="6pt" space-after="6pt">
             <xsl:value-of select="@name"/> <xsl:if test="@country">(<xsl:value-of select="@country"/>)</xsl:if>
@@ -66,8 +68,6 @@
               </fo:table-header>
               <fo:table-body text-align="center">
                 <xsl:for-each select="standings/standing">
-                  <xsl:sort select="number(@points)" order="descending" data-type="number"/>
-                  <xsl:sort select="number(@goals_diff)" order="ascending" data-type="number"/>
                   <fo:table-row>
                     <fo:table-cell><fo:block font-size="8pt"><xsl:value-of select="@group_name"/></fo:block></fo:table-cell>
                     <fo:table-cell><fo:block font-size="8pt"><xsl:value-of select="@rank"/></fo:block></fo:table-cell>
