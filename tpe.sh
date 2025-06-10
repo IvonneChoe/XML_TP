@@ -1,11 +1,3 @@
-function extraction() {
-  out=$1
-  query=$2
-  pf=$3
-  id=$4
-  java net.sf.saxon.Query -s:$out -q:$query prefix="${pf}" season_id="sr:season:${id}"
-}
-
 function xml_linter() {
   file=$1
   touch hdata.tmp
@@ -33,9 +25,9 @@ LIST="seasons_list.xml"
 ORDERED_LIST="ordered_seasons_list.xml"
 INFO="season_info.xml"
 STANDINGS="season_standings.xml"
+FO="handball_page.fo"
 XSL_DATA="format.xsl"
 XSL_ID="order_seasons_list.xsl"
-FO="handball_page.fo"
 PDF="handball_report.pdf"
 touch $INPUT $ORDERED_LIST $LIST $FO $INFO $STANDINGS
 
@@ -47,12 +39,12 @@ download "https://api.sportradar.com/handball/trial/v2/en/seasons.xml" $LIST
 
 xsltproc $XSL_ID $LIST > $ORDERED_LIST
 
-season_id=$(extraction $ORDERED_LIST extract_season_id.xq $prefix | grepper)
+season_id=$(java net.sf.saxon.Query -q:extract_season_id.xq prefix=$prefix | grepper)
 
 download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/info.xml" $INFO
 download "https://api.sportradar.com/handball/trial/v2/en/seasons/sr%3Aseason%3A${season_id}/standings.xml" $STANDINGS
 
-extraction $INPUT extract_handball_data.xq $prefix $season_id > $INPUT
+java net.sf.saxon.Query -q:extract_handball_data.xq prefix=$prefix season_id="sr:season:${season_id}" > $INPUT
 xml_linter $INPUT
 
 fop -xml $INPUT -xsl $XSL_DATA -foout $FO
